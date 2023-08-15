@@ -26,3 +26,10 @@ class alpaca_dataset:
     train_split: str = "train"
     test_split: str = "val"
     data_path: str = "ft_datasets/alpaca_data.json"
+
+@dataclass
+class receipt_dataset:
+    dataset: str = "receipt_dataset"
+    train_split: str = "train"
+    test_split: str = "val"
+    data_path: str = "ft_datasets/receipt_data.json"
