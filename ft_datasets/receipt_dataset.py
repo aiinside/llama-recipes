@@ -22,7 +22,7 @@ class ReceiptDataset(Dataset):
     def __init__(self, dataset_config, tokenizer, partition="train", max_words=2000):
         self.ann = json.load(open(dataset_config.data_path))
         self.ann = self.ann[partition]
-        print("testinggg")
+        print(f"running on partition {partition}; there are {len(self.ann)} samples" )
         if partition == "train":
             self.ann = self.ann
         else:
