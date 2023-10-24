@@ -2,6 +2,10 @@ import ft_config
 import torch
 from transformers import LlamaForCausalLM, LlamaTokenizer
 
+import os
+os.environ["LD_LIBRARY_PATH"] = "/usr/local/cuda-12.0/lib64:/usr/lib/x86_64-linux-gnu"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
+
 print("===== ft_config =====")
 print(ft_config)
 print(ft_config.base_model)
@@ -9,7 +13,8 @@ model_id=ft_config.base_model
 
 tokenizer = LlamaTokenizer.from_pretrained(model_id)
 
-model =LlamaForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map='auto', torch_dtype=torch.float16)
+# model =LlamaForCausalLM.from_pretrained(model_id, load_in_8bit=True, device_map='auto', torch_dtype=torch.float16)
+model =LlamaForCausalLM.from_pretrained(model_id, device_map='auto', torch_dtype=torch.float16)
 
 
 from pathlib import Path
